@@ -1,0 +1,52 @@
+{
+  "name": "electron_hiya_business",
+  "productName": "Hiya_Setup_win7_64bit",
+  "description": "My Electron application description",
+  "keywords": [],
+  "main": "./main.js",
+  "version": "1.2.4",
+  "author": "liugenbin",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "dependencies": {
+    "electron-pos-printer": "^1.3.7",
+    "node-fetch": "^2.7.0"
+  },
+  "devDependencies": {
+    "electron": "22.3.27",
+    "electron-builder": "^22.3.27"
+  },
+  "build": {
+    "appId": "com.hiya-business",
+    "productName": "",
+    "copyright": "Copyright © 2024 ${author}",
+    "asar": true,
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "food.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "food.ico",
+      "uninstallerIcon": "food.ico",
+      "installerHeaderIcon": "food.ico",
+      "perMachine": true,
+      "deleteAppDataOnUninstall": true
+    },
+    "extraResources": [
+      "config.json"
+    ],
+    "extraFiles": [
+      "global.js",
+      "api.js"
+    ]
+  }
+}
