@@ -80,7 +80,7 @@ function createMainWindow() {
     });
 
     // 应用准备好后，检查更新
-    autoUpdater.checkForUpdatesAndNotify();
+    autoUpdater.checkForUpdatesAndNotify().then(r => {});
 
     // 自动更新事件监听
     autoUpdater.on('checking-for-update', () => {
