@@ -1,3 +1,4 @@
 # Merchants端
 ## 支持系统
-* windows10
+* windows7
+* windows8
