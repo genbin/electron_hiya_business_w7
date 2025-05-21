@@ -4,21 +4,26 @@ const {contextBridge, ipcRenderer} = require('electron');
 contextBridge.exposeInMainWorld('saveUserLoginData', (data) => {
     ipcRenderer.send('save-user-login-data', data);
 });
-/*
-contextBridge.exposeInMainWorld('getSystemPrinters', (data) => {
-    ipcRenderer.send('get-system-printers');
+
+// 获取系统打印机
+contextBridge.exposeInMainWorld('checkSystemPrinter', (data) => {
+    ipcRenderer.send('check-system-printer', data);
 });
 
-contextBridge.exposeInMainWorld('getPrintersList',  (data) => {
-    ipcRenderer.send('get-printers-list');
+// 打印测试页
+contextBridge.exposeInMainWorld('printTestPage', (data) => {
+    ipcRenderer.send('print-test-page', data);
 });
 
-contextBridge.exposeInMainWorld('clearClipboard', (data) => {
-    ipcRenderer.send('clear-clipboard');
+// 在你的渲染进程代码中
+ipcRenderer.on('update-message', (event, message) => {
+    console.log('收到更新消息:', message);
+    // 在这里更新你的 UI，例如显示一个提示条或状态文本
+    // document.getElementById('update-status').innerText = message;
 });
 
-contextBridge.exposeInMainWorld('getCurrentLocation', (data) => {
-    ipcRenderer.send('get-current-location');
+ipcRenderer.on('update-download-progress', (event, percent) => {
+    console.log('下载进度:', percent.toFixed(2) + '%');
+    // 在这里更新你的 UI，例如更新一个进度条
+    // document.getElementById('download-progress-bar').style.width = percent + '%';
 });
-* */
-

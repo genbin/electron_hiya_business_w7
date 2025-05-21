@@ -146,6 +146,18 @@ function _printItWithData(printerName = '', printContent) {
     }
 }
 
+function printTestPage(printerName = '') {
+    var printContent = `[
+        {"type":"text","value":"${printerName}","style":{ "fontWeight": "500", "textAlign": "center", "fontSize": "24px" }},
+        {"type":"text","value":"Test status: Passed","style":{ "fontWeight": "700", "textAlign": "left", "fontSize": "24px" }},
+        {"type":"text","value":"<br>","style":{}},{"type":"text","value":"2025-05-21 14:39:09","style":{"textAlign":"center"}},
+        { "type": "text", "value": "<br>", "style": {} }
+    ]`;
+    if (printerName !== null && printerName.trim() !== '') {
+        printReceipt(printerName, printContent);
+    }
+}
+
 function openLogFile() {
     const date = new Date();
     const year = date.getFullYear();
@@ -167,5 +179,4 @@ function formatDate(timestamp) {
     return `${year}-${month}-${day}`;
 }
 
-
-module.exports = {getMessage, printReceipt, savePrinters, getCurrentLocation, openLogFile};
+module.exports = {getMessage, printReceipt, savePrinters, getCurrentLocation, openLogFile, printTestPage};
